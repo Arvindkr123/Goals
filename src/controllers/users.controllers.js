@@ -59,11 +59,9 @@ export const loginController = asyncHandler(async (req, res, next) => {
 });
 
 export const getCurrentUserController = asyncHandler(async (req, res, next) => {
-  const { _id, name, email } = await userModel.findById(req.user._id);
-  console.log(_id, name, email);
   res.status(200).json({
-    id: _id,
-    name,
-    email,
+    _id: req.user._id,
+    name: req.user.name,
+    email: req.user.email,
   });
 });
